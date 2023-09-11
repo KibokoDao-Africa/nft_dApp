@@ -1,8 +1,12 @@
 export interface NFT {
-  id: number;
-  name: string;
-  description: string;
-  url: string;
-  price: number;
-  minted?: boolean;
+  metadata:{
+    id: number;
+    image:string;
+    name: string;
+    description: string;
+    url: string;
+    price: number;
+    minted?: boolean;
+  }
+ 
 }

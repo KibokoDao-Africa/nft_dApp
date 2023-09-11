@@ -41,17 +41,18 @@ const Nft = ({ nft }: { nft: NFT }) => {
 
   return (
     <div className={styles.NFT}>
-      {nft?.url && (
+      {nft?.metadata.url && (
         <MediaRenderer
-          src={nft.url.replace("ipfs://", "https://ipfs.thirdwebcdn.com/ipfs/")}
+          // src={nft.url.replace("ipfs://", "https://ipfs.thirdwebcdn.com/ipfs/")}
+          src ={nft.metadata.image}
           className={styles.NFTImage}
         />
       )}
 
       <div className={styles.textContainer}>
-        <h2>{nft?.name}</h2>
-        <p>{nft?.description}</p>
-        <p>{nft?.price} ETH</p>
+        <h2>{nft?.metadata.name}</h2>
+        <p>{nft?.metadata.description}</p>
+        <p>{nft?.metadata.price} ETH</p>
       </div>
 
       {loading ? (
@@ -62,11 +63,11 @@ const Nft = ({ nft }: { nft: NFT }) => {
         >
           Minting...
         </p>
-      ) : nft?.minted ? (
+      ) : nft?.metadata.minted ? (
         <b>This NFT has already been minted</b>
       ) : (
         <Web3Button
-          action={() => mintNft(nft?.id)}
+          action={() => mintNft(nft?.metadata.id)}
           contractAddress={nftCollectionAddress}
         >
           Mint

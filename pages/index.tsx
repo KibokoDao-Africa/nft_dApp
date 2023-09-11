@@ -32,7 +32,7 @@ const Home: NextPage = () => {
       const response = await contract.erc721.getAll();
       const data =  response;
       console.log(data) ;
-       
+
       setNftMetadata(data);
     } catch (error) {
       console.error(error);
@@ -53,7 +53,7 @@ const Home: NextPage = () => {
           {loading && <p>Loading...</p>}
           <div className={styles.NFTs}>
             {nftMetadata &&
-              nftMetadata.map((nft: NFT) => <Nft key={nft.id} nft={nft} />)}
+              nftMetadata.map((nft: NFT) => <Nft key={nft.metadata.id} nft={nft} />)}
           </div>
         </>
       ) : (
